@@ -1,0 +1,13 @@
+<div class="post-grid">
+  <div class="post-card" *ngFor="let post of posts">
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.body }}</p>
+    <div class="card-buttons">
+      <a [routerLink]="['/posts', post.id]" class="btn view-btn">View</a>
+      <a [routerLink]="['/posts', post.id, 'edit']" class="btn edit-btn">Edit</a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoading" class="loading">Loading posts...</div>
+<div *ngIf="error" class="error">{{ error }}</div>
