@@ -1,0 +1,128 @@
+.edit-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    margin-bottom: 1.5rem;
+    color: #004721;
+    font-size: 1.8rem;
+  }
+
+  .edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        font-weight: 600;
+        margin-bottom: 0.4rem;
+        font-size: 1rem;
+      }
+
+      input,
+      textarea {
+        padding: 0.6rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+      }
+
+      small {
+        color: red;
+        font-size: 0.85rem;
+      }
+    }
+
+    button {
+      align-self: flex-start;
+      padding: 0.7rem 1.5rem;
+      background-color: #009c4a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background-color: #007837;
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .edit-container {
+    margin: 1rem;
+    padding: 1.5rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .edit-form {
+      .form-group {
+        label {
+          font-size: 0.95rem;
+        }
+
+        input,
+        textarea {
+          font-size: 0.95rem;
+        }
+      }
+
+      button {
+        font-size: 0.95rem;
+        padding: 0.6rem 1.2rem;
+      }
+    }
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .edit-container {
+    margin: 1rem;
+    padding: 1rem;
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    .edit-form {
+      gap: 1rem;
+
+      .form-group {
+        label {
+          font-size: 0.9rem;
+        }
+
+        input,
+        textarea {
+          font-size: 0.9rem;
+          padding: 0.5rem;
+        }
+      }
+
+      button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+}

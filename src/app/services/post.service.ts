@@ -22,4 +22,7 @@ getComments(postId: number): Observable<Comment[]> {
   return this.http.get<Comment[]>(`${this.baseUrl}/posts/${postId}/comments`);
 }
 
+ updatePost(id: number, updatedPost: Post): Observable<Post> {
+    return this.http.put<Post>(`${this.baseUrl}/posts/${id}`, updatedPost);
+  }
  }

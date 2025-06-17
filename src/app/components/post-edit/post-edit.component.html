@@ -1,0 +1,23 @@
+<div class="edit-container">
+  <h2>Edit Post</h2>
+
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="edit-form">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input id="title" type="text" formControlName="title" />
+      <small *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched">
+        Title is required.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="body">Body</label>
+      <textarea id="body" rows="5" formControlName="body"></textarea>
+      <small *ngIf="postForm.get('body')?.invalid && postForm.get('body')?.touched">
+        Body is required.
+      </small>
+    </div>
+
+    <button type="submit" [disabled]="isSubmitting || postForm.invalid">Update Post</button>
+  </form>
+</div>
