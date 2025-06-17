@@ -13,4 +13,13 @@ export class PostService {
   getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${this.baseUrl}/posts`);
   }
+
+  getPost(id: number): Observable<Post> {
+  return this.http.get<Post>(`${this.baseUrl}/posts/${id}`);
+}
+
+getComments(postId: number): Observable<Comment[]> {
+  return this.http.get<Comment[]>(`${this.baseUrl}/posts/${postId}/comments`);
+}
+
  }

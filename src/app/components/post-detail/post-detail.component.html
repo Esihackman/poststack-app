@@ -1,0 +1,24 @@
+<div class="post-detail-wrapper" *ngIf="post; else loadingOrError">
+  <div class="post-card">
+    <h2 class="post-title">{{ post.title }}</h2>
+    <p class="post-body">{{ post.body }}</p>
+  </div>
+
+  <div class="comments-section" *ngIf="comments.length > 0">
+    <h3>Comments</h3>
+    <div class="comments-grid">
+      <div class="comment-card" *ngFor="let comment of comments">
+        <h4 class="comment-author">{{ comment.name }}</h4>
+        <p class="comment-body">{{ comment.body }}</p>
+        <small class="comment-email">{{ comment.email }}</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #loadingOrError>
+  <div class="loading-error">
+    <p *ngIf="error">{{ error }}</p>
+    <p *ngIf="!error">Loading...</p>
+  </div>
+</ng-template>
