@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Post } from '../models/post.model';
 import { Observable, throwError } from 'rxjs';
@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 @Injectable({ providedIn: 'root' })
 export class PostService {
   private baseUrl = environment.apiBaseUrl;
-
+ allPosts = signal<Post[]>([]);
   constructor(private http: HttpClient) {}
 
   // GET all posts with optional pagination
@@ -28,11 +28,8 @@ export class PostService {
   }
 
   // GET single post by ID
-  getPost(id: number): Observable<Post> {
-    return this.http.get<Post>(`${this.baseUrl}/posts/${id}`).pipe(
-      retry(2),
-      catchError(this.handleError)
-    );
+  getPost(id: number): Post {
+    return this.allPosts().find(post => post.id === id)!;
   }
 
   // GET comments for a post
@@ -52,7 +49,8 @@ export class PostService {
   }
 
   // CREATE post
-  createPost(post: Partial<Post>): Observable<Post> {
+  createPost(post: Post): Observable<Post> {
+    this.allPosts.set([post, ...this.allPosts()]);
     return this.http.post<Post>(`${this.baseUrl}/posts`, post).pipe(
       retry(2),
       catchError(this.handleError)

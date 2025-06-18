@@ -33,7 +33,7 @@ export class PostCreateComponent {
 
     this.isSubmitting = true;
 
-    this.postService.createPost(this.postForm.value).subscribe({
+    this.postService.createPost({id: this.postService.allPosts().length + 1, ...this.postForm.value}).subscribe({
       next: () => {
         this.isSubmitting = false;
         this.router.navigate(['/posts']);

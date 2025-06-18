@@ -19,7 +19,7 @@ export class PostListComponent implements OnInit {
   showConfirmModal = false;
   postToDelete: number | null = null;
 
-  constructor(private postService: PostService) {}
+  constructor(public postService: PostService) {}
 
   ngOnInit(): void {
     this.fetchPosts();
@@ -28,7 +28,9 @@ export class PostListComponent implements OnInit {
   fetchPosts(): void {
     this.postService.getPosts().subscribe({
       next: (data) => {
-        this.posts = data;
+        // this.posts = data;
+        if(this.postService.allPosts().length === 0) this.postService.allPosts.set(data);
+        // this.postService.allPosts.set(data);  
         this.isLoading = false;
       },
       error: (err) => {

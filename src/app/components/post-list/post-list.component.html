@@ -1,7 +1,7 @@
 <div class="post-grid">
   
 
-  <div class="post-card" *ngFor="let post of posts">
+  <div class="post-card" *ngFor="let post of postService.allPosts()">
     <h3>{{ post.title }}</h3>
     <p>{{ post.body }}</p>
     <div class="card-buttons">

@@ -29,12 +29,7 @@ export class PostEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.postId = +this.route.snapshot.paramMap.get('id')!;
-    this.postService.getPost(this.postId).subscribe(post => {
-      this.postForm = this.fb.group({
-        title: [post.title, [Validators.required]],
-        body: [post.body, [Validators.required]]
-      });
-    });
+    this.postService.getPost(this.postId);
   }
 
   onSubmit(): void {

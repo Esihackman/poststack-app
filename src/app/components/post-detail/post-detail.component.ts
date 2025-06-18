@@ -14,7 +14,7 @@ import { Location } from '@angular/common';
   styleUrls: ['./post-detail.component.scss']
 })
 export class PostDetailComponent implements OnInit {
-  post: Post | null = null;
+  post: Post | undefined = undefined;
   comments: any[] = [];
   error: string | null = null;
 
@@ -26,11 +26,7 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const postId = Number(this.route.snapshot.paramMap.get('id'));
-    this.postService.getPost(postId).subscribe({
-      next: (data) => this.post = data,
-      error: () => this.error = 'Failed to load post.'
-    });
-
+    this.post = this.postService.allPosts().find(post => post.id === postId);
     this.postService.getComments(postId).subscribe({
       next: (data) => this.comments = data,
       error: () => this.error = 'Failed to load comments.'
