@@ -22,8 +22,8 @@ export class PostCreateComponent {
     private router: Router
   ) {
     this.postForm = this.fb.group({
-      title: ['', Validators.required],
-      body: ['', Validators.required],
+      title: '', 
+      body: ''
     });
   }
 
