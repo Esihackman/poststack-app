@@ -31,4 +31,18 @@ export class PostListComponent implements OnInit {
       }
     });
   }
+
+  deletePost(id: number): void {
+    if (confirm('Are you sure you want to delete this post?')) {
+      this.postService.deletePost(id).subscribe({
+        next: () => {
+          this.posts = this.posts.filter(post => post.id !== id);
+        },
+        error: (err) => {
+          console.error('Error deleting post:', err);
+          this.error = 'Failed to delete post. Please try again.';
+        }
+      });
+    }
+  }
 }

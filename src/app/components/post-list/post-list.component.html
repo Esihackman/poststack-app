@@ -5,8 +5,10 @@
     <div class="card-buttons">
       <a [routerLink]="['/posts', post.id]" class="btn view-btn">View</a>
       <a [routerLink]="['/posts', post.id, 'edit']" class="btn edit-btn">Edit</a>
+      <button (click)="deletePost(post.id)" class="delete-btn">Delete</button>
     </div>
   </div>
+  
 </div>
 
 <div *ngIf="isLoading" class="loading">Loading posts...</div>

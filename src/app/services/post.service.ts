@@ -30,4 +30,8 @@ getComments(postId: number): Observable<Comment[]> {
   return this.http.post<Post>(`${this.baseUrl}/posts`, post);
 }
 
+deletePost(id: number): Observable<void> {
+  return this.http.delete<void>(`${this.baseUrl}/posts/${id}`);
+}
+
  }
