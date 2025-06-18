@@ -1,4 +1,5 @@
 <div class="create-post-card">
+   <button class="back-button" (click)="goBack()">← Back</button>
   <h2>Create New Post</h2>
 
   <form [formGroup]="postForm" (ngSubmit)="onSubmit()">

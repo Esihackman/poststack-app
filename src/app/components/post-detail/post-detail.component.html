@@ -1,4 +1,8 @@
+
+
 <div class="post-detail-wrapper" *ngIf="post; else loadingOrError">
+  <button class="back-button" (click)="goBack()">← Back</button>
+
   <div class="post-card">
     <h2 class="post-title">{{ post.title }}</h2>
     <p class="post-body">{{ post.body }}</p>

@@ -3,12 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PostService } from '../../services/post.service';
 import { Post } from '../../models/post.model';
-import { HttpClientModule } from '@angular/common/http';
+
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-post-detail',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, ],
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.scss']
 })
@@ -19,7 +20,8 @@ export class PostDetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private postService: PostService
+    private postService: PostService,
+     private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -33,5 +35,8 @@ export class PostDetailComponent implements OnInit {
       next: (data) => this.comments = data,
       error: () => this.error = 'Failed to load comments.'
     });
+  }
+  goBack(): void {
+    this.location.back();
   }
 }

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router } from '@angular/router';
 import { PostService } from '../../services/post.service';
 import { CommonModule } from '@angular/common';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-post-create',
   standalone: true,
@@ -19,7 +19,8 @@ export class PostCreateComponent {
   constructor(
     private fb: FormBuilder,
     private postService: PostService,
-    private router: Router
+    private router: Router,
+     private location: Location
   ) {
     this.postForm = this.fb.group({
       title: '', 
@@ -43,5 +44,9 @@ export class PostCreateComponent {
         this.isSubmitting = false;
       }
     });
+  
+  }
+  goBack(): void {
+    this.location.back();
   }
 }

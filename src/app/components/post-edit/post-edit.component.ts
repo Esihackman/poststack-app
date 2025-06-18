@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-post-edit',
   standalone: true,
@@ -23,7 +23,8 @@ export class PostEditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private postService: PostService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private location: Location
   ) {}
 
   ngOnInit(): void {
@@ -49,4 +50,8 @@ export class PostEditComponent implements OnInit {
       this.router.navigate(['/posts']);
     });
   }
+  goBack(): void {
+  this.location.back();
+}
+
 }
