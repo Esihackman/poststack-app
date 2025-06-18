@@ -66,4 +66,36 @@ export class PostListComponent implements OnInit {
     this.showConfirmModal = false;
     this.postToDelete = null;
   }
+  currentPage = 1;
+postsPerPage = 10;
+
+loadPosts(): void {
+  this.isLoading = true;
+  this.postService.getPosts(this.currentPage, this.postsPerPage).subscribe({
+    next: (data) => {
+      this.posts = data;
+      this.isLoading = false;
+    },
+    error: (err) => {
+      console.error('Error fetching posts:', err);
+      this.error = 'Failed to load posts.';
+      this.isLoading = false;
+    }
+  });
+}
+
+nextPage() {
+  this.currentPage++;
+  this.loadPosts();
+}
+
+prevPage() {
+  if (this.currentPage > 1) {
+    this.currentPage--;
+    this.loadPosts();
+  }
+}
+
+
+
 }
