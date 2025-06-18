@@ -25,4 +25,9 @@ getComments(postId: number): Observable<Comment[]> {
  updatePost(id: number, updatedPost: Post): Observable<Post> {
     return this.http.put<Post>(`${this.baseUrl}/posts/${id}`, updatedPost);
   }
+
+  createPost(post: Partial<Post>): Observable<Post> {
+  return this.http.post<Post>(`${this.baseUrl}/posts`, post);
+}
+
  }
