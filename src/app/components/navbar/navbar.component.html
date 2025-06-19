@@ -9,9 +9,12 @@
     <li [class.active]="isActive('/create')">
       <a routerLink="/create">Create Post</a>
     </li>
-    <li [class.active]="isActive('/login')">
-      <a routerLink="/login">Login</a>
+
+   
+    <li>
+      <button (click)="toggleAuth()">
+        {{ authService.isLoggedIn() ? 'Logout' : 'Login' }}
+      </button>
     </li>
   </ul>
 </nav>
-
