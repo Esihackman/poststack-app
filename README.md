@@ -1,59 +1,102 @@
-# PoststackApp
+# 📰 Angular Post Management App
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.14.
+This is a functional Angular application that allows users to **view**, **create**, **edit**, and **delete** posts using the [JSONPlaceholder API](https://jsonplaceholder.typicode.com/). It also includes a comments section for each post and utilizes modern Angular features such as **standalone components**, **Angular Signals**, and **RxJS** for reactive programming.
 
-## Development server
+---
 
-To start a local development server, run:
+## 📦 Project Setup & Run Instructions
+
+### ✅ Prerequisites
+
+- Node.js and npm installed
+- Angular CLI installed globally  
+  ```bash
+  npm install -g @angular/cli
+  ```
+
+### 🚀 Install & Run
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/esihackman/angular-post-app.git
+cd angular-post-app
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Run the development server**
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. Visit the app in your browser at [http://localhost:4200](http://localhost:4200)
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 📜 Available NPM Scripts
 
-```bash
-ng generate component component-name
+| Script              | Purpose                                              |
+|---------------------|------------------------------------------------------|
+| `ng serve`          | Compiles and serves the app locally with live reload |
+| `ng build`          | Compiles the app for production                      |
+| `ng test`           | Runs unit tests using Karma                          |
+| `ng lint`           | Runs code linter to check for errors                 |
+| `ng generate`       | Used to generate components/services/etc.            |
+
+---
+
+## 📁 Project Structure & Key Features
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── post-list/        # Lists all posts with pagination
+│   │   ├── post-detail/      # Displays a single post with comments
+│   │   ├── post-edit/        # Edit form for a post
+│   │   ├── post-create/      # Form to create a new post
+│   │   └── confirm-modal/    # Reusable confirmation modal
+│   ├── services/
+│   │   ├── post.service.ts   # Handles all HTTP requests for posts
+│   │   └── auth.guard.ts     # Simple route protection
+│   ├── models/
+│   │   └── post.model.ts     # Post interface definition
+│   └── app.routes.ts         # Application routes
+├── environments/
+│   ├── environment.ts        # Environment config (API base URL)
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🌟 Key Features
 
-## Building
+- **CRUD Operations**: Users can Create, Read, Update, and Delete posts.
+- **Pagination**: Loads posts page by page.
+- **Comments**: Each post shows its associated comments.
+- **Confirmation Modal**: Safely delete posts with a user confirmation step.
+- **Success/Error Feedback**: Users get real-time feedback on actions.
+- **Authentication Guard**: Routes like create/edit are protected.
+- **Angular Signals**: `signal<Post[]>` used for reactive state management.
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 📌 Requirements Checklist
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- ✅ View post list with pagination
+- ✅ View single post and comments
+- ✅ Create post
+- ✅ Edit post
+- ✅ Delete post with confirmation
+- ✅ Signals for reactivity
+- ✅ Standalone components
+- ✅ Error and success messages
+- ✅ Route guards
+- ✅ Functional UI
 
-## Running unit tests
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
