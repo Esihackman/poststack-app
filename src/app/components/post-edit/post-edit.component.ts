@@ -54,7 +54,7 @@ export class PostEditComponent implements OnInit {
 
     this.postService.updatePost(this.postId, {
       id: this.postId,
-      userId: 1, // mock user
+      userId: 1, 
       ...this.postForm.value
     }).subscribe(() => {
       this.isSubmitting = false;

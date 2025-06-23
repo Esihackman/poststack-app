@@ -9,8 +9,8 @@ export const routes: Routes = [
   { path: '', redirectTo: 'posts', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'posts', component: PostListComponent },
-  { path: 'posts/:id', component: PostDetailComponent }, // ✅ This is for viewing
-  { path: 'posts/:id/edit', component: PostEditComponent, canActivate: [AuthGuard] }, // ✅ This is for editing
+  { path: 'posts/:id', component: PostDetailComponent }, 
+  { path: 'posts/:id/edit', component: PostEditComponent, canActivate: [AuthGuard] }, 
   { path: 'create', component: PostCreateComponent, canActivate: [AuthGuard] },
 ];
-  // ...add login route here if needed
+  
